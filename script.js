@@ -32,36 +32,6 @@ let metersName = [
   "Femtometer",
 ];
 
-const imperials = {
-  in: {
-    name: "Inch",
-    conv(m) {
-      return m * 39.26;
-    },
-  },
-
-  ft: {
-    name: "Foot",
-    conv(m) {
-      return m * 3.28084;
-    },
-  },
-
-  yd: {
-    name: "Yard",
-    conv(m) {
-      return m * 1.0936;
-    },
-  },
-
-  mi: {
-    name: "Mile",
-    conv(m) {
-      return m / 1609.344;
-    },
-  },
-};
-
 let fromUnit = "";
 let toUnit = "";
 
@@ -72,11 +42,7 @@ function initElem(m, n, i) {
   const lg = document.createElement("option");
   lg.setAttribute("value", m);
 
-  if (meters.includes(m)) {
-    lg.innerText = metersName[i];
-  } else {
-    lg.innerText = i.name;
-  }
+  lg.innerText = metersName[i];
 
   if (m === "m") {
     lg.setAttribute("selected", "");
@@ -89,14 +55,6 @@ meters.forEach((c, i) => {
   initElem(c, fromUnitElem, i);
   initElem(c, toUnitElem, i);
 });
-
-fromUnitElem.appendChild(document.createElement("hr"));
-toUnitElem.appendChild(document.createElement("hr"));
-
-for (const w in imperials) {
-  initElem(w, fromUnitElem, imperials[w]);
-  initElem(w, toUnitElem, imperials[w]);
-}
 
 [fromUnitElem, toUnitElem].forEach((c) => {
   c.onchange = () => {
@@ -144,21 +102,16 @@ function convertUnit(rev = false) {
 
   let fromIdx = getIdx(fromUnitEl);
 
-  // console.log(fromIdx, toIdx);
-
   let f = 10.0;
   f = 10.0 ** (fromIdx * -1);
 
   let m = fromI.value * f;
 
-  if (meters.includes(toUnitEl.value)) {
-    let toIdx = getIdx(toUnitEl);
-    f = 10.0 ** toIdx;
-    toI.value = m * f;
-  } else {
-    console.log(imperials[toUnitEl.value]);
-    toI.value = imperials[toUnitEl.value].conv(m);
-  }
+  let toIdx = getIdx(toUnitEl);
+  f = 10.0 ** toIdx;
+  toI.value = m * f;
 }
+from.value = 0;
+to.value = 0;
 
 convertUnit();
