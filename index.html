@@ -11,19 +11,24 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- Logo Website -->
   <link rel="icon" href="icon-web.svg">
 </head>
 
 <body>
-  <h1>Calculator Length Converter</h1>
-  <input type="number" name="" id="from">
-  <select name="" id="from-unit" class="form-select">
-  </select>
-  <span>=</span>
-  <input type="number" name="" id="to">
-  <select name="" id="to-unit" class="form-select">
-  </select>
+  <div class="inp">
+    <h1>Calculator Length Converter</h1>
+    <div class="inp-sel">
+      <input id="from" type="number" class="input"><select id="from-unit" class="form-select"></select>
+    </div>
+    <br>
+    <div class="res"><b>=</b></div>
+    <br>
+    <div class="inp-sel">
+      <input id="to" type="number" class="input"><select id="to-unit" class="form-select"></select>
+    </div>
+    <br>
+  </div>
+
   <script src="script.js"></script>
 </body>
 
