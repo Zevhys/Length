@@ -9,7 +9,7 @@ let meters = [
   "dm",
   "cm",
   "mm",
-  "mum",
+  "μm",
   "nm",
   "pm",
   "fm",
@@ -42,7 +42,7 @@ function initElem(m, n, i) {
   const lg = document.createElement("option");
   lg.setAttribute("value", m);
 
-  lg.innerText = metersName[i];
+  lg.innerText = metersName[i] + ` (${meters[i]})`;
 
   if (m === "m") {
     lg.setAttribute("selected", "");
