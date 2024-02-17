@@ -75,10 +75,16 @@ const to = document.getElementById("to");
 
 from.addEventListener("input", () => {
   convertUnit();
+  if (from.value === "") {
+    to.value = "";
+  }
 });
 
 to.addEventListener("input", () => {
   convertUnit(true);
+  if (to.value === "") {
+    from.value = "";
+  }
 });
 
 function convertUnit(rev = false) {
