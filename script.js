@@ -38,6 +38,9 @@ let toUnit = "";
 const fromUnitElem = document.getElementById("from-unit");
 const toUnitElem = document.getElementById("to-unit");
 
+const from = document.getElementById("from");
+const to = document.getElementById("to");
+
 function initElem(m, n, i) {
   const lg = document.createElement("option");
   lg.setAttribute("value", m);
@@ -59,27 +62,24 @@ meters.forEach((c, i) => {
 [fromUnitElem, toUnitElem].forEach((c) => {
   c.onchange = () => {
     if (c === fromUnitElem) {
+      convertUnit();
       if (to.value === "" && from.value === "") {
         to.value = "";
         from.value = "":
       }
       fromUnit = fromUnitElem.value;
-      convertUnit();
     }
 
     if (c === toUnitElem) {
+      convertUnit(true);
       if (to.value === "" && from.value === "") {
         to.value = "";
         from.value = "":
       }
       toUnit = toUnitElem.value;
-      convertUnit(true);
     }
   };
 });
-
-const from = document.getElementById("from");
-const to = document.getElementById("to");
 
 from.addEventListener("input", () => {
   convertUnit();
