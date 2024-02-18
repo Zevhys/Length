@@ -63,18 +63,22 @@ meters.forEach((c, i) => {
   c.onchange = () => {
     if (c === fromUnitElem) {
       convertUnit();
-      if (to.value === "" && from.value === "") {
-        to.value = "";
+      if (to.value === "") {
         from.value = "";
+      }
+      if (from.value === "") {
+        to.value = "";
       }
       fromUnit = fromUnitElem.value;
     }
 
     if (c === toUnitElem) {
       convertUnit(true);
-      if (to.value === "" && from.value === "") {
-        to.value = "";
+      if (to.value === "") {
         from.value = "";
+      }
+      if (from.value === "") {
+        to.value = "";
       }
       toUnit = toUnitElem.value;
     }
